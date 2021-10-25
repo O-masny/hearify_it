@@ -37,6 +37,7 @@ dependencies:
   splashscreen: ^1.3.5
   flutter_icons: ^1.1.0
   flutter_control: ^2.1.0
+  page_transition: ^2.0.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

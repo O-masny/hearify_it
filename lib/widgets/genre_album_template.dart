@@ -64,9 +64,10 @@ class GenreAlbumTemplate extends StatelessWidget {
                 ),
               ),
               const HeightBox(40),
-              CatalogAlbumTemplate(),
+              CatalogAlbumTemplate(
+                  songs.first['title'], songs.first['description']),
               const HeightBox(40),
-              CatalogAlbumTemplate(),
+              CatalogAlbumTemplate(songs[1]['title'], songs[1]['description']),
             ],
           ),
         ],
