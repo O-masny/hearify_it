@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18.021" height="15.26" viewBox="0 0 18.021 15.26">
+    <g transform="translate(300.921 578.618) rotate(180)">
+        <g transform="translate(300.921 578.618) rotate(180)">
+            <g transform="translate(0)">
+                <path
+                    d="M8.529,2.1A1.231,1.231,0,0,0,6.792.358l-6.43,6.4h0a1.232,1.232,0,0,0,0,1.742h0l6.43,6.4a1.231,1.231,0,0,0,1.736-1.745L3.11,7.714Z"
+                    fill="#28d4c6" />
+            </g>
+        </g>
+        <line x1="14" transform="translate(284 571)" fill="none" stroke="#28d4c6"
+            stroke-linecap="round" stroke-width="2.2" />
+    </g>
+</svg>

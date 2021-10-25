@@ -28,27 +28,30 @@ class _RootAppState extends State<RootApp> {
   }
 
   Widget getBody() {
-    return IndexedStack(index: activeTab, children: const [
-      HomePage(),
-      Center(
-          child: Text("Search",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white60,
-                  fontWeight: FontWeight.bold))),
-      Center(
-          child: Text("Book",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white60,
-                  fontWeight: FontWeight.bold))),
-      Center(
-          child: Text("Settings",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white60,
-                  fontWeight: FontWeight.bold))),
-    ]);
+    return IndexedStack(
+        alignment: AlignmentDirectional.bottomEnd,
+        index: activeTab,
+        children: const [
+          HomePage(),
+          Center(
+              child: Text("Search",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white60,
+                      fontWeight: FontWeight.bold))),
+          Center(
+              child: Text("Book",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white60,
+                      fontWeight: FontWeight.bold))),
+          Center(
+              child: Text("Settings",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white60,
+                      fontWeight: FontWeight.bold))),
+        ]);
   }
 
   Widget getFooter() {

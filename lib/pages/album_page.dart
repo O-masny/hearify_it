@@ -4,6 +4,8 @@ import 'package:hearify_it/widgets/boxes.dart';
 import 'package:hearify_it/widgets/divider.dart';
 import 'package:page_transition/page_transition.dart';
 
+import 'music_detail_page.dart';
+
 class AlbumPage extends StatefulWidget {
   final dynamic song;
   const AlbumPage({Key? key, this.song}) : super(key: key);
@@ -76,9 +78,12 @@ class _AlbumPageState extends State<AlbumPage> {
                               context,
                               PageTransition(
                                   alignment: Alignment.bottomCenter,
-                                  child: AlbumPage(
-                                    song: songs[index],
-                                  ),
+                                  child: MusicDetailPage(
+                                      title: songs[index]['title'],
+                                      color: songs[index]['color'],
+                                      description: songs[index]['description'],
+                                      img: songs[index]['img'],
+                                      songUrl: songs[index]['song_url']),
                                   type: PageTransitionType.scale),
                             );
                           },
@@ -144,6 +149,18 @@ class _AlbumPageState extends State<AlbumPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 10),
                     child: GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        PageTransition(
+                            alignment: Alignment.bottomCenter,
+                            child: MusicDetailPage(
+                                title: songs[index]['title'],
+                                color: songs[index]['color'],
+                                description: songs[index]['description'],
+                                img: songs[index]['img'],
+                                songUrl: songs[index]['song_url']),
+                            type: PageTransitionType.scale),
+                      ),
                       child: Column(
                         children: [
                           Row(
