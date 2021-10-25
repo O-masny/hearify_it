@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hearify_it/widgets/genre_album_template.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: getAppBar(),
-      body: getBody(),
+      body: GenreAlbumTemplate(),
     );
   }
 
@@ -36,31 +37,6 @@ class _HomePageState extends State<HomePage> {
             Icon(Icons.list)
           ],
         ),
-      ),
-    );
-  }
-
-  Widget getBody() {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Column(
-                      children: const [Text("Data")],
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
