@@ -45,7 +45,7 @@ class BrowseBar extends StatelessWidget {
               children: const [
                 WidthBox(7.5),
                 Text(
-                  "Search",
+                  "Search music",
                   style: TextStyle(
                       fontWeight: FontWeight.bold, fontStyle: FontStyle.normal),
                 ),

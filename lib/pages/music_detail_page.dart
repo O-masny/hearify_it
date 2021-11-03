@@ -2,6 +2,7 @@ import 'dart:core';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:hearify_it/widgets/appbar_music_detail.dart';
 import 'package:hearify_it/widgets/boxes.dart';
 
 class MusicDetailPage extends StatefulWidget {
@@ -29,21 +30,9 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black, appBar: getAppBar(), body: getBody());
+        backgroundColor: Colors.black, appBar: appbarMusicDetail(), body: getBody());
   }
 
-  PreferredSizeWidget getAppBar() {
-    return AppBar(
-      backgroundColor: Colors.black,
-      elevation: 0,
-      actions: [
-        IconButton(
-          icon: const Icon(Feather.more_vertical, color: Colors.white60),
-          onPressed: () {},
-        )
-      ],
-    );
-  }
 
   Widget getBody() {
     var size = MediaQuery.of(context).size;
@@ -162,7 +151,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                   onPressed: () {},
                 ),
                 IconButton(
-                  icon: Icon(Icons.skip_previous,
+                  icon: Icon(Icons.arrow_left_sharp,
                       color: Colors.white.withOpacity(0.4), size: 25),
                   onPressed: () {},
                 ),
@@ -178,7 +167,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                   onPressed: () {},
                 ),
                 IconButton(
-                  icon: Icon(Icons.skip_next,
+                  icon: Icon(Icons.arrow_right_sharp,
                       color: Colors.white.withOpacity(0.4), size: 25),
                   onPressed: () {},
                 ),
@@ -193,7 +182,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
           const HeightBox(20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Icon(Icons.tv, color: Colors.deepPurpleAccent, size: 20)
             ],
           )
