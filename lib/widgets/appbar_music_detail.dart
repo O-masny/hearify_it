@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_control/core.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 
 
 PreferredSizeWidget appbarMusicDetail() => AppBar(
@@ -8,7 +8,7 @@ PreferredSizeWidget appbarMusicDetail() => AppBar(
     elevation: 0,
     actions: [
       IconButton(
-        icon: const Icon(Feather.more_vertical, color: Colors.white60),
+        icon: const Icon(Icons.more_vert, color: Colors.white60),
         onPressed: () {},
       )
     ],

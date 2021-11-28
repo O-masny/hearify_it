@@ -1,7 +1,6 @@
 import 'dart:core';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:hearify_it/widgets/appbar_music_detail.dart';
 import 'package:hearify_it/widgets/boxes.dart';
 
@@ -30,9 +29,10 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black, appBar: appbarMusicDetail(), body: getBody());
+        backgroundColor: Colors.black,
+        appBar: appbarMusicDetail(),
+        body: getBody());
   }
-
 
   Widget getBody() {
     var size = MediaQuery.of(context).size;
