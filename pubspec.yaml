@@ -38,6 +38,10 @@ dependencies:
   flutter_control: ^2.1.0
   page_transition: ^2.0.4
   audioplayer: ^0.8.1
+  rxdart: ^0.27.3
+  observable: ^0.24.0
+  flutter_web_auth: ^0.4.0
+  http: ^0.13.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

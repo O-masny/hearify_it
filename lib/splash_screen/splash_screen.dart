@@ -1,52 +1,91 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:hearify_it/pages/home_page.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'dart:async';
+import 'dart:ui';
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  SplashState createState() => SplashState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class SplashState extends State<MyApp> {
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    shared_Preferences();
+  }
+
+  void shared_Preferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? logged = prefs.getBool('logged');
+    print("LOGGED: ${logged}");
+    if (logged == true && logged !=null) {
+      Timer(const Duration(seconds: 5),
+              () => Navigator.pushReplacementNamed(context, "/home"));
+    }
+    else{
+      Timer(const Duration(seconds: 5),
+              () => Navigator.pushReplacementNamed(context, "/login"));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-        onClick: Future.delayed(
-          Duration.zero,
-          () {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const HomePage()),
-                (route) => false);
-          },
-        ),
-        seconds: 4,
-        title: const Text('Welcome In SplashScreen'),
-        image: Image.network(
-            'https://flutter.io/images/catalog-widget-placeholder.png'),
-        backgroundColor: Colors.white,
-        photoSize: 100.0,
-        loaderColor: Colors.red,
-        pageRoute: _createRoute());
+    return Scaffold(
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+          ),
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: ExactAssetImage("assets/splashScreen/start.jpg"),
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+              child: Container(
+                decoration:
+                BoxDecoration(color: Colors.white.withOpacity(0.0)),
+              ),
+            ),
+          ),
+          Container(
+              alignment: Alignment.center,
+              color: Colors.grey.withOpacity(0.1),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Text(
+                    "Spotify-Clone",
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  Divider(
+                    color: Colors.black,
+                    indent: 40,
+                    endIndent: 40,
+                  ),
+                  CircleAvatar(
+                    backgroundImage:
+                    AssetImage("assets/splashScreen/profile.jpg"),
+                  ),
+                  Text(
+                    "Rodrigo Lara",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              )),
+        ],
+      ),
+    );
   }
-}
-
-Route _createRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = const Offset(0.0, 1.0);
-      var end = Offset.zero;
-      var curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
 }
