@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -20,19 +19,10 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             decoration: BoxDecoration(color: Theme.of(context).primaryColor),
           ),
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: ExactAssetImage("assets/splashScreen/start.jpg"),
-                fit: BoxFit.fitHeight,
-              ),
-            ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-              child: Container(
-                decoration:
-                BoxDecoration(color: Colors.white.withOpacity(0.0)),
-              ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+            child: Container(
+              decoration: BoxDecoration(color: Colors.white.withOpacity(0.0)),
             ),
           ),
           Container(
@@ -42,24 +32,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   const Text(
-                    "Spotify-Clone",
+                    "Hearify it",
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
-
                   SizedBox(
                     width: 160,
                     child: FlatButton(
                       child: Row(
-                        children: [
-
-                          const Expanded(child: Text(
-                            "Sign In with Spotify",
-                            style: TextStyle(
-                                fontSize: 11.0, fontFamily: "Raleway"),
-                          ),),
-                          Icon(Icons.ac_unit_sharp
+                        children: const [
+                          Expanded(
+                            child: Text(
+                              "Sign In with Spotify",
+                              style: TextStyle(
+                                  fontSize: 11.0, fontFamily: "Raleway"),
+                            ),
                           ),
+                          Icon(Icons.ac_unit_sharp),
                         ],
                       ),
                       onPressed: () {

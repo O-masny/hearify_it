@@ -3,10 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:hearify_it/entities/entity_track.dart';
 import 'authorization_api.dart';
 
-class TracksPlaylistApiProvider {
+class UserInformationProvider {
   final _client = Api().client;
 
-  Future<TracksPlaylistModel?> fetchTracks(String url) async {
+  Future<TracksPlaylistModel?> fetchUserInfo() async {
+    var url = " https://api.spotify.com/v1/me";
     try {
       final response = await _client.get(
         url.toString(),
@@ -24,7 +25,7 @@ class TracksPlaylistApiProvider {
       if (e is DioError && (e).response?.statusCode == 401 ||
           (e as DioError).response?.statusCode == 400) {
         await Api().refreshToken();
-        fetchTracks(url);
+        fetchUserInfo();
         return null;
       }
     }

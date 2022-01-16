@@ -1,22 +1,14 @@
 import 'dart:core';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hearify_it/widgets/appbar_music_detail.dart';
 import 'package:hearify_it/widgets/boxes.dart';
 
 class MusicDetailPage extends StatefulWidget {
   final String? title;
-  final String? description;
-  final Color? color;
   final String? img;
-  final String? songUrl;
-  const MusicDetailPage(
-      {Key? key,
-      this.title,
-      this.description,
-      this.color,
-      this.img,
-      this.songUrl})
+  final String? description;
+
+  const MusicDetailPage({Key? key, this.title, this.img, this.description})
       : super(key: key);
 
   @override
@@ -31,10 +23,10 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: appbarMusicDetail(),
-        body: getBody());
+        body: getBody(widget.img!));
   }
 
-  Widget getBody() {
+  Widget getBody(String img) {
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
@@ -46,17 +38,18 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                 width: size.width - 100,
                 height: size.width - 100,
                 decoration: BoxDecoration(
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
-                        color: widget.color!,
+                        color: Colors.indigoAccent,
                         blurRadius: 50,
                         spreadRadius: 5,
-                        offset: const Offset(-10, 40))
+                        offset: Offset(-10, 40))
                   ],
                   color: Colors.deepPurpleAccent,
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                      image: AssetImage(widget.img!), fit: BoxFit.cover),
+                    image: NetworkImage(img),
+                  ),
                 ),
               )),
             ),
@@ -69,7 +62,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                   color: Colors.deepPurpleAccent,
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                      image: AssetImage(widget.img!), fit: BoxFit.cover),
+                      image: NetworkImage(widget.img!), fit: BoxFit.cover),
                 ),
               )),
             ),
@@ -86,6 +79,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                   const Icon(Icons.add_circle_outline_rounded,
                       color: Colors.white60),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
@@ -97,14 +91,16 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                       ),
                       SizedBox(
                         width: 150,
-                        child: Text(
-                          widget.description!,
-                          maxLines: 1,
-                          softWrap: true,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Colors.white.withOpacity(0.5),
+                        child: Center(
+                          child: Text(
+                            widget.description!,
+                            maxLines: 1,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white.withOpacity(0.5),
+                            ),
                           ),
                         ),
                       ),

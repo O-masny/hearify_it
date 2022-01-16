@@ -8,6 +8,7 @@ import 'music_detail_page.dart';
 
 class AlbumPage extends StatefulWidget {
   final dynamic song;
+
   const AlbumPage({Key? key, this.song}) : super(key: key);
 
   @override
@@ -80,10 +81,7 @@ class _AlbumPageState extends State<AlbumPage> {
                                   alignment: Alignment.bottomCenter,
                                   child: MusicDetailPage(
                                       title: songs[index]['title'],
-                                      color: songs[index]['color'],
-                                      description: songs[index]['description'],
-                                      img: songs[index]['img'],
-                                      songUrl: songs[index]['song_url']),
+                                      img: songs[index]['img']),
                                   type: PageTransitionType.scale),
                             );
                           },
@@ -154,11 +152,9 @@ class _AlbumPageState extends State<AlbumPage> {
                         PageTransition(
                             alignment: Alignment.bottomCenter,
                             child: MusicDetailPage(
-                                title: songs[index]['title'],
-                                color: songs[index]['color'],
-                                description: songs[index]['description'],
-                                img: songs[index]['img'],
-                                songUrl: songs[index]['song_url']),
+                              title: songs[index]['title'],
+                              img: songs[index]['img'],
+                            ),
                             type: PageTransitionType.scale),
                       ),
                       child: Column(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hearify_it/pages/library_page.dart';
+import 'package:hearify_it/providers/authorization_api.dart';
 import 'package:hearify_it/widgets/genre_album_template.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,15 +28,24 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text(
+          children: [
+            const Text(
               "Explore",
               style: TextStyle(
                   fontSize: 20,
                   color: Colors.white60,
                   fontWeight: FontWeight.bold),
             ),
-            Icon(Icons.list)
+            IconButton(
+                icon: const Icon(Icons.list),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MyLibraryPage(),
+                    ),
+                  );
+                })
           ],
         ),
       ),

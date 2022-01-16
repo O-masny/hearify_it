@@ -10,8 +10,10 @@ import 'package:hearify_it/providers/tracks_api_provider.dart';
 class RepositoryAuthorization {
   final authorizationCodeApiProvider = AuthorizationApiProvider();
   final authorizationTokenApiProvider = AuthorizationTokenApiProvider();
+
   Future<String?> fetchAuthorizationCode() =>
       authorizationCodeApiProvider.fetchCode();
+
   Future<AuthorizationModel> fetchAuthorizationToken(String code) =>
       authorizationTokenApiProvider.fetchToken(code);
 }
@@ -19,8 +21,21 @@ class RepositoryAuthorization {
 class RepositoryPlaylist {
   final playlistsListApiProvider = PlaylistListApiProvider();
   final tracksPlaylistApiProvider = TracksPlaylistApiProvider();
-  Future<ListPlaylistModel> fetchPlaylistList() =>
+
+  Future<ListPlaylistModel?> fetchPlaylistList() =>
       playlistsListApiProvider.fetchPlaylistList();
+
   Future<TracksPlaylistModel> fetchTracksList(String url) =>
-      tracksPlaylistApiProvider.fetchTracks(url);
+      tracksPlaylistApiProvider.fetchTracks(url) as Future<TracksPlaylistModel>;
+}
+
+class RepositoryUser {
+  final playlistsListApiProvider = PlaylistListApiProvider();
+  final tracksPlaylistApiProvider = TracksPlaylistApiProvider();
+
+  Future<ListPlaylistModel?> fetchPlaylistList() =>
+      playlistsListApiProvider.fetchPlaylistList();
+
+  Future<TracksPlaylistModel> fetchTracksList(String url) =>
+      tracksPlaylistApiProvider.fetchTracks(url) as Future<TracksPlaylistModel>;
 }

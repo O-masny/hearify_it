@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hearify_it/pages/home_page.dart';
 import 'package:hearify_it/pages/login_ui.dart';
+import 'package:hearify_it/pages/tracks_page.dart';
 import 'package:hearify_it/pages/wait_screen.dart';
 import 'package:hearify_it/splash_screen/splash_screen.dart';
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Spotify Clone',
+      title: 'Hearify it',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
         '/login': (BuildContext context) => const LoginScreen(),
         '/home': (BuildContext context) => const HomePage(),
         '/splash': (BuildContext context) => const SplashScreen(),
-        //'/tracks': (BuildContext context) => const TracksScreen(),
-        '/wait': (BuildContext context) =>  WaitScreen(),
+        '/tracks': (BuildContext context) => TracksScreen(),
+        '/wait': (BuildContext context) =>  const WaitScreen(),
       },
     );
   }

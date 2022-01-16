@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class WaitScreen extends StatefulWidget {
+  const WaitScreen({Key? key}) : super(key: key);
+
   @override
   _WaitScreenState createState() => _WaitScreenState();
 }

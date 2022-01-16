@@ -14,7 +14,7 @@ class PlaylistBloc {
   Stream get tracksList => _tracks_list_Fetcher.stream;
 
   fetchPlaylistList() async {
-    ListPlaylistModel code = await _repository.fetchPlaylistList();
+    ListPlaylistModel? code = await _repository.fetchPlaylistList();
     _playlist_list_Fetcher.sink.add(code);
   }
   fetchTracksList(String url) async {
