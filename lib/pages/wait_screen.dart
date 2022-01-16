@@ -34,7 +34,7 @@ class _WaitScreenState extends State<WaitScreen> {
     return Scaffold(
       body: StreamBuilder(
         stream: authorizationBloc.authorizationCode,
-        builder: (context, AsyncSnapshot<String> snapshot) {
+        builder: (context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data == "access_denied") {
               Navigator.pop(contextBuild);
@@ -42,7 +42,7 @@ class _WaitScreenState extends State<WaitScreen> {
               authorizationBloc.fetchAuthorizationToken(snapshot.data!);
               return StreamBuilder(
                 stream: authorizationBloc.authorizationToken,
-                builder: (context, AsyncSnapshot<AuthorizationModel> snapshot) {
+                builder: (context, AsyncSnapshot<dynamic> snapshot) {
                   if (snapshot.hasData) {
                     print("FINAL DATA");
                     print('access_token: ${snapshot.data!.accessToken}');
@@ -50,7 +50,7 @@ class _WaitScreenState extends State<WaitScreen> {
                     print("expires_in: ${snapshot.data!.expiresIn}");
                     print("refresh_token: ${snapshot.data!.refreshToken}");
                     print("scope: ${snapshot.data!.scope}");
-                    addTokenToSF(snapshot);
+                    addTokenToSF(snapshot as AsyncSnapshot<AuthorizationModel>);
                     return _bienvenido();
                   } else if (snapshot.hasError) {
                     return Text(snapshot.error.toString());

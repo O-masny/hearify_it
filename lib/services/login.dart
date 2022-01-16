@@ -10,10 +10,8 @@ class AuthorizationBloc {
       PublishSubject<AuthorizationModel>();
   final PublishSubject _authorizationCodeFetcher = PublishSubject<String>();
 
-  Observable<ChangeRecord> get authorizationCode =>
-      _authorizationCodeFetcher.stream as Observable<ChangeRecord>;
-  Observable<ChangeRecord> get authorizationToken =>
-      _authorizationTokenFetcher.stream as Observable<ChangeRecord>;
+  Stream get authorizationCode => _authorizationCodeFetcher.stream;
+  Stream get authorizationToken => _authorizationTokenFetcher.stream;
 
   fetchAuthorizationCode() async {
     String? code = await _repository.fetchAuthorizationCode();

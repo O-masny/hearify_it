@@ -58,7 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: TextStyle(
                                 fontSize: 11.0, fontFamily: "Raleway"),
                           ),),
-                          Icon(FontAwesomeIcons.spotify),
+                          Icon(Icons.ac_unit_sharp
+                          ),
                         ],
                       ),
                       onPressed: () {

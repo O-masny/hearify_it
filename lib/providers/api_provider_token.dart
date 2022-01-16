@@ -5,8 +5,8 @@ import 'dart:convert';
 
 class AuthorizationTokenApiProvider {
   Client client = Client();
-  static String client_id = "YOURCLIENTIDHERE";
-  static String client_secret ="YOURCLIENTSECRETHERE";
+  static String client_id = "1c9f60ec949d4f6a8ec0da2e7eab4d54";
+  static String client_secret ="73a085e16a2f40c29f514fea4663c830";
 
   static String AuthorizationStr = "$client_id:$client_secret";
   static var bytes = utf8.encode(AuthorizationStr);
@@ -14,13 +14,13 @@ class AuthorizationTokenApiProvider {
 
   String Authorization= 'Basic ' + base64Str;
 
-  Uri urlToToken = 'https://accounts.spotify.com/api/token' as Uri;
+  var urlToToken = Uri.parse('https://accounts.spotify.com/api/token');
 
   Future<AuthorizationModel> fetchToken(String code) async {
     var response = await client.post(urlToToken, body: {
       'grant_type': "authorization_code",
       'code': code,
-      'redirect_uri': 'alarmfy:/'
+      'redirect_uri': 'http://localhost:8888/callback/'
     },headers: {'Authorization' : Authorization});
 
     if (response.statusCode == 200) {
